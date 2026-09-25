@@ -1,0 +1,638 @@
+/* ============================================================
+   Component layer. Built on tokens, overriding Bootstrap's own
+   appearance while keeping its grid and layout utilities.
+   ============================================================ */
+
+/* --- Surfaces ---------------------------------------------- */
+
+.surface {
+  background: var(--surface-1);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+}
+
+.surface-raised {
+  background: var(--surface-2);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Glass is reserved for surfaces that float over content: the
+   navbar and menus. Everywhere else it just muddies text. */
+.glass-surface {
+  background: var(--surface-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(var(--blur-glass)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(160%);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-surface {
+    background: var(--surface-2);
+  }
+}
+
+.surface-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+}
+
+.hairline {
+  border: 0;
+  border-top: 1px solid var(--hairline-color);
+  margin: 0;
+  opacity: 1;
+}
+
+/* --- Type roles -------------------------------------------- */
+
+.type-hero {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: var(--weight-light);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+}
+
+.type-display {
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-tight);
+}
+
+.type-numeric {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* The instrument label: tiny, spaced, uppercase, monospaced. */
+.type-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--content-muted);
+}
+
+.type-body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+.text-secondary-soft {
+  color: var(--content-secondary);
+}
+
+.text-muted-soft {
+  color: var(--content-muted);
+}
+
+/* --- Buttons ------------------------------------------------ */
+
+.btn-climora {
+  --btn-bg: transparent;
+  --btn-fg: var(--content-primary);
+  --btn-border: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-instant) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+}
+
+.btn-climora:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-climora:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-climora--primary {
+  --btn-bg: var(--accent);
+  --btn-fg: var(--accent-content);
+}
+
+.btn-climora--primary:hover:not(:disabled) {
+  --btn-bg: var(--accent-hover);
+}
+
+.btn-climora--secondary {
+  --btn-bg: var(--surface-2);
+  --btn-border: var(--border-subtle);
+}
+
+.btn-climora--secondary:hover:not(:disabled) {
+  --btn-bg: var(--surface-3);
+  --btn-border: var(--border-strong);
+}
+
+.btn-climora--ghost {
+  --btn-fg: var(--content-secondary);
+}
+
+.btn-climora--ghost:hover:not(:disabled) {
+  --btn-bg: var(--surface-sunken);
+  --btn-fg: var(--content-primary);
+}
+
+.btn-climora--danger {
+  --btn-bg: var(--danger);
+  --btn-fg: #ffffff;
+}
+
+.btn-climora--pill {
+  border-radius: var(--radius-pill);
+  padding-inline: 1.125rem;
+}
+
+.btn-climora--lg {
+  padding: 0.75rem 1.5rem;
+  font-size: var(--text-base);
+}
+
+.btn-climora--icon {
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+}
+
+/* --- Fields -------------------------------------------------- */
+
+.form-control,
+.form-select {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  padding: 0.625rem 0.875rem;
+  color: var(--content-primary);
+  background: var(--surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.form-control::placeholder {
+  color: var(--content-muted);
+}
+
+.form-control:focus,
+.form-select:focus {
+  color: var(--content-primary);
+  background: var(--surface-2);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-ring);
+}
+
+.form-control.is-invalid {
+  border-color: var(--danger);
+}
+
+.form-control.is-invalid:focus {
+  box-shadow: 0 0 0 3px var(--danger-quiet);
+}
+
+.form-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--content-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.form-check-input {
+  background-color: var(--surface-2);
+  border-color: var(--border-strong);
+}
+
+.form-check-input:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.form-check-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-ring);
+}
+
+/* --- Segmented control --------------------------------------- */
+
+.segmented {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-pill);
+}
+
+.segmented__option {
+  padding: 0.375rem 0.875rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--content-secondary);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.segmented__option:hover {
+  color: var(--content-primary);
+}
+
+.segmented__option[aria-pressed='true'],
+.segmented__option[aria-selected='true'] {
+  color: var(--content-primary);
+  background: var(--surface-2);
+  box-shadow: var(--shadow-xs);
+}
+
+/* --- Badge ---------------------------------------------------- */
+
+.badge-climora {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.25rem 0.625rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
+}
+
+.badge-climora--warning {
+  color: var(--warning);
+  background: var(--warning-quiet);
+}
+
+.badge-climora--danger {
+  color: var(--danger);
+  background: var(--danger-quiet);
+}
+
+.badge-climora--positive {
+  color: var(--positive);
+  background: var(--positive-quiet);
+}
+
+.badge-climora--accent {
+  color: var(--accent);
+  background: var(--accent-quiet);
+}
+
+/* --- Skeleton -------------------------------------------------- */
+
+.climora-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-sunken) 25%,
+    var(--border-subtle) 37%,
+    var(--surface-sunken) 63%
+  );
+  background-size: 400% 100%;
+  animation: climora-shimmer 1.6s ease infinite;
+}
+
+@keyframes climora-shimmer {
+  from {
+    background-position: 100% 50%;
+  }
+  to {
+    background-position: 0 50%;
+  }
+}
+
+/* --- Menus ----------------------------------------------------- */
+
+@keyframes climora-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- Tiles ------------------------------------------------------ */
+
+/* Cards lift a little under the pointer. Enough to read as
+   interactive, not enough to become a distraction while scanning. */
+.climora-tile {
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.climora-tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+.climora-toast {
+  animation: climora-toast-in var(--duration-base) var(--ease-spring);
+}
+
+@keyframes climora-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- Dialog ------------------------------------------------------ */
+
+.climora-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background: rgba(8, 12, 22, 0.6);
+  backdrop-filter: blur(6px);
+  animation: climora-fade-in var(--duration-fast) var(--ease-out);
+}
+
+.climora-dialog {
+  width: 100%;
+  max-width: 460px;
+  padding: var(--space-6);
+  background: var(--surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  animation: climora-dialog-in var(--duration-base) var(--ease-spring);
+}
+
+@keyframes climora-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes climora-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================================
+   Mobile. Not a shrunken desktop: touch targets, thumb reach and
+   horizontal space all behave differently below 768px.
+   ============================================================ */
+
+/* Rows of options scroll sideways instead of wrapping into a tall
+   block that pushes the content it describes off screen. */
+.scroll-row {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+
+.scroll-row::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-row > * {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+/* Fades at the edges signal there is more to the side. */
+.scroll-row--faded {
+  mask-image: linear-gradient(to right, transparent, #000 12px, #000 calc(100% - 12px), transparent);
+}
+
+@media (max-width: 767.98px) {
+  /* Touch targets reach the 44px recommended minimum. */
+  .btn-climora {
+    min-height: 40px;
+  }
+
+  .btn-climora--icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .segmented {
+    max-width: 100%;
+  }
+
+  .segmented__option {
+    padding-inline: 0.75rem;
+  }
+
+  /* Full-width toasts sit above the thumb rather than in a corner. */
+  .climora-toast-stack {
+    left: var(--space-3) !important;
+    right: var(--space-3) !important;
+    bottom: calc(var(--space-3) + env(safe-area-inset-bottom)) !important;
+    max-width: none !important;
+  }
+
+  .climora-dialog {
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+  }
+
+  /* Dense readings need less air on a narrow column. */
+  .climora-tile {
+    padding: var(--space-3) !important;
+  }
+
+  .climora-tile:hover {
+    transform: none;
+  }
+
+  .type-hero {
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+  }
+}
+
+/* Pointer-only refinements: hover states mean nothing on touch, and
+   leaving them on causes sticky highlights after a tap. */
+@media (hover: none) {
+  .climora-tile:hover {
+    transform: none;
+    box-shadow: var(--shadow-xs);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .app-shell__content {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* ============================================================
+   Menus. Opaque by design: a translucent menu nested inside the
+   translucent navbar cannot blur it, so the page beneath bleeds
+   straight through the text.
+   ============================================================ */
+
+.climora-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + var(--space-2));
+  min-width: 260px;
+  max-width: calc(100vw - 24px);
+  padding: var(--space-2);
+  background: var(--surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  animation: climora-menu-in var(--duration-fast) var(--ease-out);
+  transform-origin: top right;
+}
+
+.climora-menu__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3) var(--space-3);
+  border-bottom: 1px solid var(--border-hairline);
+  margin-bottom: var(--space-2);
+}
+
+.climora-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--content-primary);
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.climora-menu__item:hover {
+  background: var(--surface-sunken);
+}
+
+/* The ring follows the item's own radius instead of drawing a
+   rectangle across the whole menu. */
+.climora-menu__item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.climora-menu__item--danger {
+  color: var(--danger);
+}
+
+.climora-menu__separator {
+  height: 1px;
+  margin: var(--space-2) 0;
+  background: var(--border-hairline);
+  border: 0;
+}
+
+
+/* --- Bottom sheet ------------------------------------------------
+   Rendered through a portal on document.body. Anchoring it inside the
+   navbar would fail: backdrop-filter turns that element into a
+   containing block, and a fixed sheet would measure from there. */
+
+.climora-sheet {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 1101;
+  padding: var(--space-2) var(--space-3) calc(var(--space-4) + env(safe-area-inset-bottom));
+  background: var(--surface-2);
+  border: 1px solid var(--border-subtle);
+  border-bottom: 0;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  box-shadow: var(--shadow-lg);
+  animation: climora-sheet-in var(--duration-base) var(--ease-out);
+}
+
+.climora-sheet__handle {
+  display: block;
+  width: 40px;
+  height: 4px;
+  margin: var(--space-1) auto var(--space-3);
+  background: var(--border-strong);
+  border-radius: var(--radius-pill);
+}
+
+.climora-sheet .climora-menu__item {
+  padding: 0.875rem 0.75rem;
+}
+
+.climora-scrim--sheet {
+  z-index: 1100;
+  align-items: flex-end;
+}
+
+@keyframes climora-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

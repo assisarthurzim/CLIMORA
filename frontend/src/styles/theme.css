@@ -1,0 +1,95 @@
+/* ============================================================
+   Semantic tokens. Components reference only these.
+   Depth comes from stacked surfaces, not from heavy shadows.
+   ============================================================ */
+
+[data-bs-theme='dark'] {
+  /* Four surfaces, each a step closer to the reader. Never pure
+     black: absolute black flattens everything above it. */
+  --canvas: var(--slate-950);
+  --surface-1: var(--slate-900);
+  --surface-2: var(--slate-850);
+  --surface-3: var(--slate-800);
+  --surface-sunken: var(--slate-990);
+  --surface-glass: rgba(23, 32, 51, 0.62);
+  --surface-glass-strong: rgba(23, 32, 51, 0.86);
+
+  --content-primary: #f1f5f9;
+  --content-secondary: #a9b4c4;
+  --content-muted: #6d7a8d;
+  --content-inverse: var(--slate-950);
+
+  --border-hairline: rgba(255, 255, 255, 0.06);
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-glass: rgba(255, 255, 255, 0.1);
+
+  --accent: var(--azure-400);
+  --accent-hover: var(--azure-300);
+  --accent-quiet: rgba(96, 165, 250, 0.14);
+  --accent-content: var(--slate-950);
+  --accent-ring: rgba(96, 165, 250, 0.32);
+
+  --warning: var(--amber-400);
+  --warning-quiet: rgba(251, 191, 36, 0.13);
+  --danger: var(--coral-400);
+  --danger-quiet: rgba(248, 113, 113, 0.13);
+  --positive: var(--moss-400);
+  --positive-quiet: rgba(52, 211, 153, 0.13);
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
+
+  /* Barely-there weather light across the top of the page. */
+  --ambient: radial-gradient(120% 80% at 15% -10%, rgba(37, 99, 235, 0.16) 0%, transparent 60%),
+    radial-gradient(90% 60% at 92% -5%, rgba(148, 163, 184, 0.07) 0%, transparent 55%);
+  --hairline-color: rgba(255, 255, 255, 0.07);
+}
+
+[data-bs-theme='light'] {
+  /* Off-white throughout. Pure white as a page background is what
+     makes long sessions tiring. */
+  --canvas: var(--slate-50);
+  --surface-1: var(--slate-25);
+  --surface-2: #ffffff;
+  --surface-3: #ffffff;
+  --surface-sunken: var(--slate-100);
+  --surface-glass: rgba(255, 255, 255, 0.72);
+  --surface-glass-strong: rgba(255, 255, 255, 0.9);
+
+  --content-primary: var(--slate-900);
+  --content-secondary: var(--slate-600);
+  --content-muted: var(--slate-400);
+  --content-inverse: #ffffff;
+
+  --border-hairline: var(--slate-150);
+  --border-subtle: var(--slate-200);
+  --border-strong: var(--slate-300);
+  --border-glass: rgba(255, 255, 255, 0.8);
+
+  --accent: var(--azure-600);
+  --accent-hover: var(--azure-700);
+  --accent-quiet: var(--azure-50);
+  --accent-content: #ffffff;
+  --accent-ring: rgba(37, 99, 235, 0.2);
+
+  --warning: var(--amber-600);
+  --warning-quiet: #fff7e6;
+  --danger: var(--coral-600);
+  --danger-quiet: #fef2f2;
+  --positive: var(--moss-600);
+  --positive-quiet: #ecfdf5;
+
+  /* Softer and cooler than a neutral drop shadow, so cards feel
+     lifted rather than outlined. */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 10px 28px rgba(15, 23, 42, 0.07);
+  --shadow-lg: 0 28px 64px rgba(15, 23, 42, 0.1);
+
+  --ambient: radial-gradient(120% 80% at 15% -10%, rgba(37, 99, 235, 0.07) 0%, transparent 60%),
+    radial-gradient(90% 60% at 92% -5%, rgba(245, 158, 11, 0.05) 0%, transparent 55%);
+  --hairline-color: var(--slate-150);
+}
