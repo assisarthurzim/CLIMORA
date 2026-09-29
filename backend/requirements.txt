@@ -20,3 +20,6 @@ email-validator==2.2.0
 
 # External integrations
 requests==2.32.3
+
+gunicorn==23.0.0
+psycopg2-binary==2.9.10
